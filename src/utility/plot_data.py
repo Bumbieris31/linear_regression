@@ -5,24 +5,18 @@ def read_data(file_name):
     df = pd.read_csv(file_name, sep=',')
     return df
 
-def plot_data():
-    data = read_data("/Users/abumbier/linear_regression/data.csv")
+def plot_data(data):
     plt.scatter(data['km'], data['price'])
     plt.ylabel('Price')
     plt.xlabel('Mileage (km)')
     plt.show()
 
-def normalize_values(data):
-    data["km-norm"] = (data['km'] - data['km'].min()) / (data["km"].max() - data["km"].min())
-    data["price-norm"] = (data["price"] - data["price"].min()) / (data["price"].max() - data["price"].min())
-
-def plot_norm_data():
-    data = read_data("/Users/abumbier/linear_regression/data.csv")
+def plot_line(theta0, theta1, data):
     normalize_values(data)
-    plt.scatter(data['km-norm'], data['price-norm'])
+    plt.scatter(data['km'], data['price'])
+    y_val = [(data['km'].min() * theta1) + theta0, (data['km'].max() * theta1) + theta0]
+    x_val = [data["km"].min(), data["km"].max()]
+    plt.plot(x_val ,y_val, 'r')
     plt.ylabel('Price')
     plt.xlabel('Mileage (km)')
     plt.show()
-
-plot_data()
-plot_norm_data()
