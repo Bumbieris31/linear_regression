@@ -48,3 +48,8 @@ class LinearRegression():
 
     def get_hypothesis(self):
         return self.theta0, self.theta1
+
+    def save_hypothesis(self):
+        with open("saved_hypothesis.txt", "w+") as f:
+            f.write(str(self.theta0) + "\n")
+            f.write(str(self.theta1))
