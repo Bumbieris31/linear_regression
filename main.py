@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-from src.linear_regression.linear_regression import LinearRegression
-from src.estimate_price.estimate_price import EstimatePrice
-from src.utility.plot_data import plot_line, plot_data
+from src.linear_regression import LinearRegression
+from src.estimate_price import EstimatePrice
+from src.plot_data import plot_line, plot_data
+from src.options import parser
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -21,13 +22,15 @@ def plot_line(theta0, theta1, data):
     plt.show()
 
 def main():
-    file_name = "data.csv"
+    args = parser()
+    file_name = args.data
     df = pd.read_csv(file_name, sep=',')
     model = LinearRegression()
     model.train_hypothesis(df)
-    theta0, theta1 = model.get_hypothesis()
+    model.save_hypothesis()
     # plot_line(theta0, theta1, df)
-    estimate = EstimatePrice(theta0, theta1)
+    estimate = EstimatePrice()
+    estimate.load_hypothesis()
     estimate.request_mileage()
 
 if __name__ == "__main__":

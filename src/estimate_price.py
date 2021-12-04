@@ -40,8 +40,9 @@ class EstimatePrice():
             with open("saved_hypothesis.txt", "r") as f:
                 self.check_file()
                 try:
-                    self.theta0 = float(f.next().strip())
-                    self.theta1 = float(f.next().strip())
+                    self.theta0 = float(f.readline().strip())
+                    self.theta1 = float(f.readline().strip())
+                    print("read thetas: ", self.theta0, self.theta1)
                 except ValueError:
                     print("Hypothesis are wrong values")
         except FileNotFoundError:

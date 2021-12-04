@@ -1,11 +1,11 @@
-from ..utility.exception import InputError
-import pandas as pd
+from .exception import InputError
+# import pandas as pd
 import numpy as np
 
 class LinearRegression():
-    def __init__(self, learning_rate=.3, iterations=500):
+    def __init__(self, learning_rate=.3, epochs=500):
         self.learning_rate = learning_rate
-        self.num_iterations = iterations
+        self.epochs = epochs
         self.theta0 = 0
         self.theta1 = 0
 
@@ -37,7 +37,7 @@ class LinearRegression():
         '''
         m = len(data['km'])
         self.minmax_scale_values(data)
-        for i in range(self.num_iterations):
+        for i in range(self.epochs):
             predictions = self.theta1 * data['km-norm'] + self.theta0 
             derivative0 = 1/m * np.sum((predictions - data['price-norm']))
             derivative1 = 1/m * np.sum((predictions - data['price-norm']) * data['km-norm'])
