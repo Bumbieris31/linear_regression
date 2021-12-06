@@ -2,7 +2,7 @@
 
 import numpy as np
 import pandas as pd
-from options.options import parser
+from .options import parser
 
 class LinearRegression():
     def __init__(self, learning_rate=.3, epochs=500):
