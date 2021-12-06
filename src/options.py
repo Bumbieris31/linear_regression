@@ -23,7 +23,8 @@ def parser():
         help="Print data provided"
     )
     parser.add_argument(
-        "-ph", "--print_hypothesis", action="store_true"
+        "-ph", "--print_hypothesis", action="store_true",
+        help="Print hypothesis"
     )
     args = parser.parse_args()
     return args

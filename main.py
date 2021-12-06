@@ -10,6 +10,7 @@ def normalize_values(data):
     data["km-norm"] = (data['km'] - data['km'].min()) / (data["km"].max() - data["km"].min())
     data["price-norm"] = (data["price"] - data["price"].min()) / (data["price"].max() - data["price"].min())
 
+
 def plot(theta0, theta1, data, d, h):
     normalize_values(data)
     if d:
@@ -21,6 +22,7 @@ def plot(theta0, theta1, data, d, h):
     plt.ylabel('Price')
     plt.xlabel('Mileage (km)')
     plt.show()
+
 
 def main():
     print("Reading data...")
@@ -38,6 +40,7 @@ def main():
     if args.print_data or args.print_hypothesis:
         theta0, theta1 = estimate.return_hypothesis()
         plot(theta0, theta1, df, args.print_data, args.print_hypothesis)
+
 
 if __name__ == "__main__":
     main()

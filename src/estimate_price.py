@@ -37,7 +37,7 @@ class EstimatePrice():
     def check_file(self):
         if os.path.getsize('./saved_hypothesis.txt') == 0:
             print("saved_hypothesis file does not exist. Execute linear_regression first.")
-            raise FileNotFoundError
+            exit()
 
     def load_hypothesis(self):
         try:
@@ -50,6 +50,7 @@ class EstimatePrice():
                     print("Hypothesis are wrong values")
         except FileNotFoundError:
             print("saved_hypothesis file does not exist. Execute linear_regression first.")
+            exit()
 
 
 if __name__ == "__main__":

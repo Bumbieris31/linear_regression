@@ -56,6 +56,7 @@ class LinearRegression():
             f.write(str(self.theta0) + "\n")
             f.write(str(self.theta1))
 
+
 def set_args(args):
     file_name = args.data
     lr = .3
@@ -65,6 +66,7 @@ def set_args(args):
     if args.epochs:
         epochs = args.epochs
     return lr, epochs
+
 
 if __name__ == "__main__":
     args = parser()
